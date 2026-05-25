@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
+    <script>
+        var layoutSize = { 'w': 768, 'h': 1024 };
+        var X_POSITION;
+        var Y_POSITION;
+        var currentHero = 0;
+        var countHero = 2;
+
+        var snd_touch = null;
+        var snd_menu_global = null;
+        var gameScore = 0;
+        var highScore = Number(localStorage['high_score'] || 0);
+
+        function isSoundEnabled() {
+            return String(localStorage['sound_enabled'] || '1') === '1';
+        }
+    </script>
+    <script src="sceneMenu.js"></script>
+    <script src="scenePilihHero.js"></script>
+    <script src="scenePlay.js"></script>
+    <script src="sceneGameOver.js"></script>
+    <title>Shooter Game - Binar</title>
+</head>
+
+<body>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 768,
+            height: 1024,
+            scene: [sceneMenu, scenePilihHero, scenePlay, sceneGameOver],
+            scale: {
+                autoCenter: Phaser.Scale.CENTER_BOTH,
+            }
+        };
+
+        const game = new Phaser.Game(config);
+    </script>
+</body>
+</html>
